@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>상품관리-CSR</title>
   <style>
-
-
+    /* { outline:1px solid red }*/
     .fieldError {
       color:red;
       font-weight:bold;
@@ -21,13 +20,14 @@
       grid-auto-rows: 2em;
     }
 
-    #productList .wrap .head div,
-    #productList .wrap .body div {
-      border:1px solid gray;
-    }
     #productList .wrap .head{
       font-weight:bold;
       font-size:1.2em;
+    }
+
+    #productList .wrap .head div,
+    #productList .wrap .body div {
+     border:1px solid gray;
     }
 
     /* 버튼 */
@@ -64,11 +64,11 @@
       <input type="text" id="price">
       <span class="fieldError" id="priceErr"></span>
     </div>
-    <!-- 등록상태 -->
+    <!--등록상태-->
     <div class="btngrp add">
       <button type='button' id="addBtn">등록</button>
     </div>
-    <!-- 조회상태 -->
+    <!--조회상태-->
     <div class="btngrp read">
       <button type='button' id="toAddBtn">신규</button>
       <button type='button' id="modifyBtn">수정</button>
@@ -93,11 +93,11 @@
 </div>
 <script>
 
-     //불변객체 : 프로퍼티값 수정 불가.
+    //불변객체 : 프로퍼티값 수정 불가.
     const MODE = Object.freeze({
       ADD: Symbol('add'),             //등록
       READ: Symbol('read')            //조회
-    })
+    });
 
     //전역변수
     const form = {
@@ -108,7 +108,7 @@
       mode: null
     }
 
-    //등록 상태
+    //등록상태
     changeMode(MODE.ADD);
 
     //전체목록 가져오기
@@ -119,20 +119,19 @@
       //현재 mode와 비교시 동일하면 수행안함.
       if(form.mode == mode) return;
       form.mode = mode;
-        switch(form.mode){
-          case MODE.ADD : //등록
-            //버튼
-            document.querySelector('.btngrp.add').style.display = 'block';
-            document.querySelector('.btngrp.read').style.display = 'none';
-            break;
-          case MODE.READ : //조회
-            //버튼
-             document.querySelector('.btngrp.add').style.display = 'none';
-             document.querySelector('.btngrp.read').style.display = 'block';
-            break;
-        }
+      switch(form.mode){
+        case MODE.ADD : //등록
+          //버튼
+          document.querySelector('.btngrp.add').style.display = 'block';
+          document.querySelector('.btngrp.read').style.display = 'none';
+          break;
+        case MODE.READ ://조회
+          //버튼
+          document.querySelector('.btngrp.add').style.display = 'none';
+          document.querySelector('.btngrp.read').style.display = 'block';
+          break;
+      }
     }
-
 
     //입력데이터 가져오기
     function getInputData(){
@@ -152,15 +151,14 @@
       const product = getInputData();
       //3)상품등록처리
       add(product);
-      //4)목록가져오기
-      findAll();
+
       //5)양식 클리어
       clearForm();
     });
 
     //삭제 클릭
-    delBtn.addEventListener('click' ,e=>{
-    if(!confirm('삭제하시겠습니까?')) return;
+    delBtn.addEventListener('click',e=>{
+      if(!confirm('삭제하시겠습니까?')) return;
       const id = form.productId.value; //상품아이디
       deleteById(id);
       clearForm();
@@ -188,8 +186,7 @@
       //1)유효성 체크
       validChk()
       //2)수정처리
-      update(form.productId.value , getInputData());
-
+      update(form.productId.value, getInputData());
     });
 
     //목록 클릭시
@@ -201,9 +198,7 @@
     toAddBtn.addEventListener('click',e=>{
       changeMode(MODE.ADD);
       clearForm();
-
     });
-
 
     //등록
     function add(product){
@@ -216,13 +211,12 @@
         },
         body: JSON.stringify(product)   //http body      // js객체 => json포맷의 문자열
       }).then(res=>res.json())
-         .then(data=>{
-        console.log(data)
-        findAll();
-        })
+        .then(data=>{
+          console.log(data)
+          findAll();
+         })
         .catch(err=>console.log(err));
     }
-
     //조회
     function findById(id){
       const url = `http://localhost:9080/api/products/${id}`;
@@ -265,9 +259,9 @@
         body: JSON.stringify(product)  //http body
 
       }).then(res=>res.json())
-         .then(data=>{
-        console.log(data)
-        findAll();
+        .then(data=>{
+          console.log(data);
+          findAll();
         })
         .catch(err=>console.log(err));
     }
@@ -282,16 +276,16 @@
         },
       }).then(res=>res.json())
         .then(data=>{
-        console.log(data)
-        findAll();
+          console.log(data);
+          findAll();
         })
         .catch(err=>console.log(err));
     }
 
-   //목록
+    //목록
     function findAll(){
       const url = `http://localhost:9080/api/products`;
-      fetch(url,{            //url
+      fetch( url,{            //url
         method:'GET',        //http method
         headers:{             //http header
           'Accept':'application/json'
@@ -310,10 +304,13 @@
             console.log(result.join(''));
             document.querySelector('#productList .wrap .body').innerHTML=result.join('');
           }else{
+
           }
         })
         .catch(err=>console.log(err));
     }
+
+
     function validChk(){
 
       //상품명 필수

@@ -1,10 +1,10 @@
-package com.kh.demo.web;
+package com.kh.product.web;
 
-import com.kh.demo.dao.Product;
-import com.kh.demo.svc.ProductSVC;
-import com.kh.demo.web.form.DetailForm;
-import com.kh.demo.web.form.SaveForm;
-import com.kh.demo.web.form.UpdateForm;
+import com.kh.product.dao.Product;
+import com.kh.product.svc.ProductSVC;
+import com.kh.product.web.form.DetailForm;
+import com.kh.product.web.form.SaveForm;
+import com.kh.product.web.form.UpdateForm;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
@@ -26,7 +26,6 @@ import java.util.Optional;
 public class ProductController {
 
   private final ProductSVC productSVC;
-
 
   //등록양식
   @GetMapping("/add")
@@ -70,7 +69,6 @@ public class ProductController {
     redirectAttributes.addAttribute("id", productId);
     return "redirect:/products/{id}/detail";
   }
-
 
   //조회
   @GetMapping("/{id}/detail")

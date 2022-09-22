@@ -1,4 +1,4 @@
-package com.kh.demo.web.form;
+package com.kh.product.web.form;
 
 import lombok.Data;
 

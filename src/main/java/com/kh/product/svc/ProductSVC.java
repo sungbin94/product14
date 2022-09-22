@@ -1,13 +1,16 @@
-package com.kh.demo.svc;
+package com.kh.product.svc;
 
-import com.kh.demo.dao.Product;
+import com.kh.product.dao.Product;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProductSVC {
-
-  //등록
+  /**
+   * 상품등록
+   * @param product
+   * @return
+   */
   Long save(Product product);
 
   /**

@@ -1,8 +1,11 @@
-package com.kh.demo.web.form;
+package com.kh.product.web.form;
 
 import lombok.Data;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 @Data
 public class UpdateForm {

@@ -1,4 +1,4 @@
-package com.kh.demo.dao;
+package com.kh.product.dao;
 
 import java.util.List;
 import java.util.Optional;

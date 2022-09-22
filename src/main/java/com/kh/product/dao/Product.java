@@ -1,7 +1,6 @@
-package com.kh.demo.dao;
+package com.kh.product.dao;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
 public class Product {

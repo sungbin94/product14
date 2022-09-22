@@ -1,7 +1,7 @@
-package com.kh.demo.svc;
+package com.kh.product.svc;
 
-import com.kh.demo.dao.Product;
-import com.kh.demo.dao.ProductDAO;
+import com.kh.product.dao.Product;
+import com.kh.product.dao.ProductDAO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,6 @@ public class ProductSVCImpl implements ProductSVC{
   public Long save(Product product) {
     return productDAO.save(product);
   }
-
 
   //목록
   @Override
