@@ -27,6 +27,7 @@ public class ProductController {
 
   private final ProductSVC productSVC;
 
+
   //등록양식
   @GetMapping("/add")
   public String saveForm(Model model) {
@@ -69,6 +70,7 @@ public class ProductController {
     redirectAttributes.addAttribute("id", productId);
     return "redirect:/products/{id}/detail";
   }
+
 
   //조회
   @GetMapping("/{id}/detail")

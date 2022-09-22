@@ -6,11 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductSVC {
-  /**
-   * 상품등록
-   * @param product
-   * @return
-   */
+
+  //등록
   Long save(Product product);
 
   /**
